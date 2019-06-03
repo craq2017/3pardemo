@@ -1,0 +1,225 @@
+
+PLAY [Connect to 3par - get volumes] *************************************************************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************************************************************
+ok: [localhost]
+
+TASK [check if 3par WSAPI is running] ************************************************************************************************************************
+ok: [localhost]
+
+TASK [Parsing key] *******************************************************************************************************************************************
+ok: [localhost] => {
+    "msg": "0-d01f48fd31fbb07a443f04963447fd58-4a3cf15c"
+}
+
+TASK [GET 3par hosts - get hosts] ****************************************************************************************************************************
+ok: [localhost]
+
+TASK [Parsing Host GET] **************************************************************************************************************************************
+ok: [localhost] => {
+    "msg": {
+        "cache_control": "no-cache", 
+        "changed": false, 
+        "connection": "close", 
+        "content": "{\"total\":3,\"members\":[{\"id\":0,\"name\":\"admin\",\"provisioningType\":1,\"copyType\":1,\"baseId\":0,\"readOnly\":false,\"state\":1,\"failedStates\":[],\"degradedStates\":[],\"additionalStates\":[],\"adminSpace\":{\"reservedMiB\":0,\"rawReservedMiB\":0,\"usedMiB\":0,\"freeMiB\":0},\"snapshotSpace\":{\"reservedMiB\":0,\"rawReservedMiB\":0,\"usedMiB\":0,\"freeMiB\":0},\"userSpace\":{\"reservedMiB\":10240,\"rawReservedMiB\":20480,\"usedMiB\":10240,\"freeMiB\":0},\"sizeMiB\":10240,\"wwn\":\"60002AC000000000000000000001855E\",\"creationTimeSec\":1559224863,\"creationTime8601\":\"2019-05-30T17:01:03+03:00\",\"ssSpcAllocWarningPct\":0,\"ssSpcAllocLimitPct\":0,\"usrSpcAllocWarningPct\":0,\"usrSpcAllocLimitPct\":0,\"policies\":{\"staleSS\":true,\"oneHost\":false,\"zeroDetect\":false,\"system\":true,\"caching\":true,\"fsvc\":false},\"uuid\":\"fd63affa-8bb6-4905-a34d-7fe71991d321\",\"capacityEfficiency\":{},\"links\":[{\"href\":\"https://172.16.90.167:8080/api/v1/volumespacedistribution/admin\",\"rel\":\"volumeSpaceDistribution\"}]},{\"id\":1,\"name\":\".srdata\",\"provisioningType\":1,\"copyType\":1,\"baseId\":1,\"readOnly\":false,\"state\":1,\"failedStates\":[],\"degradedStates\":[],\"additionalStates\":[],\"adminSpace\":{\"reservedMiB\":0,\"rawReservedMiB\":0,\"usedMiB\":0,\"freeMiB\":0},\"snapshotSpace\":{\"reservedMiB\":0,\"rawReservedMiB\":0,\"usedMiB\":0,\"freeMiB\":0},\"userSpace\":{\"reservedMiB\":61440,\"rawReservedMiB\":122880,\"usedMiB\":61440,\"freeMiB\":0},\"sizeMiB\":61440,\"wwn\":\"60002AC000000000000000010001855E\",\"creationTimeSec\":1559224884,\"creationTime8601\":\"2019-05-30T17:01:24+03:00\",\"ssSpcAllocWarningPct\":0,\"ssSpcAllocLimitPct\":0,\"usrSpcAllocWarningPct\":0,\"usrSpcAllocLimitPct\":0,\"policies\":{\"staleSS\":true,\"oneHost\":false,\"zeroDetect\":false,\"system\":true,\"caching\":true,\"fsvc\":false},\"uuid\":\"c94032ee-1af2-4576-8531-2c812f4ad94e\",\"capacityEfficiency\":{},\"links\":[{\"href\":\"https://172.16.90.167:8080/api/v1/volumespacedistribution/.srdata\",\"rel\":\"volumeSpaceDistribution\"}]},{\"id\":2,\"name\":\"demo_ansible_volume\",\"provisioningType\":2,\"copyType\":1,\"baseId\":2,\"readOnly\":false,\"state\":1,\"failedStates\":[],\"degradedStates\":[],\"additionalStates\":[],\"adminSpace\":{\"reservedMiB\":128,\"rawReservedMiB\":384,\"usedMiB\":1,\"freeMiB\":127},\"snapshotSpace\":{\"reservedMiB\":0,\"rawReservedMiB\":0,\"usedMiB\":0,\"freeMiB\":0},\"userSpace\":{\"reservedMiB\":512,\"rawReservedMiB\":683,\"usedMiB\":0,\"freeMiB\":512},\"sizeMiB\":10240,\"wwn\":\"60002AC000000000000000020001855E\",\"creationTimeSec\":1559311551,\"creationTime8601\":\"2019-05-31T17:05:51+03:00\",\"ssSpcAllocWarningPct\":0,\"ssSpcAllocLimitPct\":0,\"usrSpcAllocWarningPct\":0,\"usrSpcAllocLimitPct\":0,\"policies\":{\"staleSS\":true,\"oneHost\":false,\"zeroDetect\":true,\"system\":false,\"caching\":true,\"fsvc\":false},\"userCPG\":\"FC_r6\",\"uuid\":\"86dffe3b-5bcc-48a5-8f21-528e287d2594\",\"capacityEfficiency\":{\"compaction\":8977.5},\"links\":[{\"href\":\"https://172.16.90.167:8080/api/v1/volumespacedistribution/demo_ansible_volume\",\"rel\":\"volumeSpaceDistribution\"}]}],\"links\":[{\"href\":\"https://172.16.90.167:8080/api/v1/volumes\",\"rel\":\"self\"},{\"href\":\"https://172.16.90.167:8080/api/v1/volumespacedistribution\",\"rel\":\"volumeSpaceDistribution\"}]}", 
+        "content_type": "application/json", 
+        "cookies": {}, 
+        "cookies_string": "", 
+        "date": "Fri, 31 May 2019 14:38:02 GMT", 
+        "failed": false, 
+        "json": {
+            "links": [
+                {
+                    "href": "https://172.16.90.167:8080/api/v1/volumes", 
+                    "rel": "self"
+                }, 
+                {
+                    "href": "https://172.16.90.167:8080/api/v1/volumespacedistribution", 
+                    "rel": "volumeSpaceDistribution"
+                }
+            ], 
+            "members": [
+                {
+                    "additionalStates": [], 
+                    "adminSpace": {
+                        "freeMiB": 0, 
+                        "rawReservedMiB": 0, 
+                        "reservedMiB": 0, 
+                        "usedMiB": 0
+                    }, 
+                    "baseId": 0, 
+                    "capacityEfficiency": {}, 
+                    "copyType": 1, 
+                    "creationTime8601": "2019-05-30T17:01:03+03:00", 
+                    "creationTimeSec": 1559224863, 
+                    "degradedStates": [], 
+                    "failedStates": [], 
+                    "id": 0, 
+                    "links": [
+                        {
+                            "href": "https://172.16.90.167:8080/api/v1/volumespacedistribution/admin", 
+                            "rel": "volumeSpaceDistribution"
+                        }
+                    ], 
+                    "name": "admin", 
+                    "policies": {
+                        "caching": true, 
+                        "fsvc": false, 
+                        "oneHost": false, 
+                        "staleSS": true, 
+                        "system": true, 
+                        "zeroDetect": false
+                    }, 
+                    "provisioningType": 1, 
+                    "readOnly": false, 
+                    "sizeMiB": 10240, 
+                    "snapshotSpace": {
+                        "freeMiB": 0, 
+                        "rawReservedMiB": 0, 
+                        "reservedMiB": 0, 
+                        "usedMiB": 0
+                    }, 
+                    "ssSpcAllocLimitPct": 0, 
+                    "ssSpcAllocWarningPct": 0, 
+                    "state": 1, 
+                    "userSpace": {
+                        "freeMiB": 0, 
+                        "rawReservedMiB": 20480, 
+                        "reservedMiB": 10240, 
+                        "usedMiB": 10240
+                    }, 
+                    "usrSpcAllocLimitPct": 0, 
+                    "usrSpcAllocWarningPct": 0, 
+                    "uuid": "fd63affa-8bb6-4905-a34d-7fe71991d321", 
+                    "wwn": "60002AC000000000000000000001855E"
+                }, 
+                {
+                    "additionalStates": [], 
+                    "adminSpace": {
+                        "freeMiB": 0, 
+                        "rawReservedMiB": 0, 
+                        "reservedMiB": 0, 
+                        "usedMiB": 0
+                    }, 
+                    "baseId": 1, 
+                    "capacityEfficiency": {}, 
+                    "copyType": 1, 
+                    "creationTime8601": "2019-05-30T17:01:24+03:00", 
+                    "creationTimeSec": 1559224884, 
+                    "degradedStates": [], 
+                    "failedStates": [], 
+                    "id": 1, 
+                    "links": [
+                        {
+                            "href": "https://172.16.90.167:8080/api/v1/volumespacedistribution/.srdata", 
+                            "rel": "volumeSpaceDistribution"
+                        }
+                    ], 
+                    "name": ".srdata", 
+                    "policies": {
+                        "caching": true, 
+                        "fsvc": false, 
+                        "oneHost": false, 
+                        "staleSS": true, 
+                        "system": true, 
+                        "zeroDetect": false
+                    }, 
+                    "provisioningType": 1, 
+                    "readOnly": false, 
+                    "sizeMiB": 61440, 
+                    "snapshotSpace": {
+                        "freeMiB": 0, 
+                        "rawReservedMiB": 0, 
+                        "reservedMiB": 0, 
+                        "usedMiB": 0
+                    }, 
+                    "ssSpcAllocLimitPct": 0, 
+                    "ssSpcAllocWarningPct": 0, 
+                    "state": 1, 
+                    "userSpace": {
+                        "freeMiB": 0, 
+                        "rawReservedMiB": 122880, 
+                        "reservedMiB": 61440, 
+                        "usedMiB": 61440
+                    }, 
+                    "usrSpcAllocLimitPct": 0, 
+                    "usrSpcAllocWarningPct": 0, 
+                    "uuid": "c94032ee-1af2-4576-8531-2c812f4ad94e", 
+                    "wwn": "60002AC000000000000000010001855E"
+                }, 
+                {
+                    "additionalStates": [], 
+                    "adminSpace": {
+                        "freeMiB": 127, 
+                        "rawReservedMiB": 384, 
+                        "reservedMiB": 128, 
+                        "usedMiB": 1
+                    }, 
+                    "baseId": 2, 
+                    "capacityEfficiency": {
+                        "compaction": 8977.5
+                    }, 
+                    "copyType": 1, 
+                    "creationTime8601": "2019-05-31T17:05:51+03:00", 
+                    "creationTimeSec": 1559311551, 
+                    "degradedStates": [], 
+                    "failedStates": [], 
+                    "id": 2, 
+                    "links": [
+                        {
+                            "href": "https://172.16.90.167:8080/api/v1/volumespacedistribution/demo_ansible_volume", 
+                            "rel": "volumeSpaceDistribution"
+                        }
+                    ], 
+                    "name": "demo_ansible_volume", 
+                    "policies": {
+                        "caching": true, 
+                        "fsvc": false, 
+                        "oneHost": false, 
+                        "staleSS": true, 
+                        "system": false, 
+                        "zeroDetect": true
+                    }, 
+                    "provisioningType": 2, 
+                    "readOnly": false, 
+                    "sizeMiB": 10240, 
+                    "snapshotSpace": {
+                        "freeMiB": 0, 
+                        "rawReservedMiB": 0, 
+                        "reservedMiB": 0, 
+                        "usedMiB": 0
+                    }, 
+                    "ssSpcAllocLimitPct": 0, 
+                    "ssSpcAllocWarningPct": 0, 
+                    "state": 1, 
+                    "userCPG": "FC_r6", 
+                    "userSpace": {
+                        "freeMiB": 512, 
+                        "rawReservedMiB": 683, 
+                        "reservedMiB": 512, 
+                        "usedMiB": 0
+                    }, 
+                    "usrSpcAllocLimitPct": 0, 
+                    "usrSpcAllocWarningPct": 0, 
+                    "uuid": "86dffe3b-5bcc-48a5-8f21-528e287d2594", 
+                    "wwn": "60002AC000000000000000020001855E"
+                }
+            ], 
+            "total": 3
+        }, 
+        "msg": "OK (unknown bytes)", 
+        "pragma": "no-cache", 
+        "redirected": false, 
+        "server": "hp3par-wsapi", 
+        "status": 200, 
+        "transfer_encoding": "chunked", 
+        "url": "https://172.16.90.167:8080/api/v1/volumes"
+    }
+}
+
+TASK [release authentication key] ****************************************************************************************************************************
+ok: [localhost]
+
+PLAY RECAP ***************************************************************************************************************************************************
+localhost                  : ok=6    changed=0    unreachable=0    failed=0   
+

@@ -1,0 +1,51 @@
+- name: Connect to 3par - get volumes
+  hosts: localhost
+
+  vars:
+    auth_3par_user: "3paradm"
+    auth_3par_password: "PTzk5fVt"
+    ip_address_3par: 172.16.90.167
+    rest_api_url_3par: "https://{{ ip_address_3par }}:8080/api/v1"
+  
+  tasks:
+    - name: check if 3par WSAPI is running
+      uri:
+        url: "{{ rest_api_url_3par }}/credentials"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body_format: json
+        body: "{ 'user': '{{ auth_3par_user }}', 'password': '{{ auth_3par_password }}' }"
+        status_code: 201
+        return_content: yes
+        validate_certs: no
+      register: output
+
+    - name: Parsing key
+      debug:
+        msg: "{{ output.json.key }}"
+
+    - name: GET 3par hosts - get hosts
+      uri:
+        url: "{{ rest_api_url_3par }}/volumes"
+        method: GET
+        headers:
+          Content-Type: "application/json"
+          X-HP3PAR-WSAPI-SessionKey: "{{ output.json.key }}"
+          Accept: "application/json"
+        status_code: 200
+        return_content: yes
+        validate_certs: no
+      register: host_output
+
+    - name: Parsing Host GET
+      debug:
+        msg: "{{ host_output }}"
+
+    - name: release authentication key
+      uri:
+        url: "{{ rest_api_url_3par }}/credentials/{{ output.json.key }}"
+        method: DELETE
+        headers:
+          Content-Type: "application/json"
+        validate_certs: no  
