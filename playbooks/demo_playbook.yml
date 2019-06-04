@@ -1,16 +1,14 @@
 ---
 - name: Demo 3PAR Ansible playbook
   hosts: localhost
-  become: yes
-
   vars:
-    volume_name: "demo_ansible_volume"
+    volume_name: "demo_ansible_volume2"
     size: 10
     size_unit: "GiB"
     cpg: "FC_r6"
-    vlun_host_name: "example_host"
+    vlun_host_name: "3pardemo"
     autolun: False
-    lunid: 110
+    lunid: 111
   
   tasks:
     - name: Load Storage System Vars
