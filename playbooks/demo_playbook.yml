@@ -9,10 +9,11 @@
     vlun_host_name: "3pardemo"
     autolun: False
     lunid: 111
+    storage_system_ip: "172.16.90.167"
+    storage_system_username: "3paradm"
+    storage_system_password: "PTzk5fVt"
   
   tasks:
-    - name: Load Storage System Vars
-      include_vars: 'properties/storage_system_properties.yml'
 
     - name: Create Volume "{{ volume_name }}"
       hpe3par_volume:
